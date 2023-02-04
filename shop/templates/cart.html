@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <title>Cart</title>
+</head>
+<body class="bodyemes">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-8 cart" style="border-radius: 15px;">
+                <div class="title">
+                    <div class="row">
+                        <div class="col" style="margin-left: -20px;"><h4><b style="font-size: 30px;font-family: 'Courier New', Courier, monospace;">Shopping Cart</b></h4></div>
+                    </div>
+                </div>    
+                {% for shop in shops %}
+                    {% if shop.cart %}
+                        <div class="row border-top border-bottom" style="border-top: 1px solid;margin-left: -12px;margin-top: -7px;">
+                            <div class="row main align-items-center" style="display: inline-block;">
+                                <div class="col-2"><img class="img-fluid" src="{{shop.image.url}}"></div>
+                                <div class="col">
+                                    <div class="row text-muted" style="margin-left: 8%;margin-top: -6%;padding-bottom: 1%;">{{shop.type}}</div>
+                                    <div class="row" style="margin-left: 8%;">{{shop.model}}</div>
+                                </div>
+                                <div class="col" style="margin-left: 55%;margin-top: -3.5%;">&euro; {{shop.price}} </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <div class="back-to-shop"><a href="/shop">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+            </div>
+            <div class="col-md-4 summary" style="width: 30%;margin-left: 64.5%;margin-top: -29%;padding-top: 4.5%;padding-bottom: 5%;">
+                <div><h5><b>Summary</b></h5></div>
+                <hr>
+                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                    <div class="col">TOTAL PRICE</div>
+                    <div class="col text-right" style="padding-top: 5px;">&dollar; 399.0</div>
+                </div>
+                <button class="btn"><a href="payment/" style="color: aliceblue;">CHECKOUT</a></button>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

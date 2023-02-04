@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' version=51 %}">
+</head>
+<body>
+  {% include 'header.html' %}
+    <div class="bg-light">
+        <div class="container py-5">
+          <div id="row">
+            <div class="col">
+              <h1 class="display">About us page</h1>
+              <p class="lead">This page, created by Nawrizbek Begimbaev</p>
+              <div class="bannergo"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>
+            </div>
+          </div>
+        </div>
+    </div>
+  <div class="bg-white py-5">
+    <div class="container py-5">
+        <div class="banner2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+        <div class="coll"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+          <h2 class="font0">Мы изучаем Python</h2>
+          <p class="font1">Мы сделали этот сайт на Django и можно и сказать это первый наш проект</p>
+        </div>
+        </div>
+      <div class="row align-items-center">
+        <div class="banner2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-2.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+        <div class="colll"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+          <h2 class="font0">Наш Ментор Атабек Муртазаев</h2>
+          <p class="font1">Он изучал нас почти год и за этот год мы научились много чему и даже FrontEnd и хочу сказать спасибо</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+</body>
+</html>
+</body>

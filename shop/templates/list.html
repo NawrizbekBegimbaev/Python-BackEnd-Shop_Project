@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Все продукты</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}?version=51">
+</head>
+<body class="body">
+    {% if user.is_authenticated %}
+    <header class="header">
+        <div id="logo1">
+            <li class="logo">Shop.</li>
+        </div>
+        <div id="logo5" style="position: absolute; right: 130px; top: 19px;height: 25px;background-color: white;">
+            <form action="{% url 'search' %}" method="get"><input name="q" type="text" placeholder="search..."></form>
+        </div>
+        <div id="profile">
+            <a href="/register/success"><img src="{% static 'profile2.svg' %}" class="abc"></a>
+        </div>
+        <div id="cart">
+            <a href="/shop/cart"><img src="{% static 'cart.svg' %}" class="abc"></a>
+        </div>
+        <div id="exit">
+            <a href="/accounts/logout?next=/"><img src="{% static 'exit.svg' %}" class="abc"></a>
+        </div>
+        <ul class="table">
+            <li id="logo2">
+                <a href="/" class="menu">
+                    Home
+                </a>
+            </li>
+            <li id="logo2" >
+                <a href="/shop" class="menu">
+                    Products
+                </a>
+            </li>
+            <li id="logo2" >
+                <a href="/shop/aboutus" class="menu">
+                    About Us
+                </a>
+            </li>
+            <li id="logo2" >
+                <a href="/shop/contact" class="menu">
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </header>
+    {% else %}
+        <header class="header">
+            <div id="logo1">
+                <li class="logo">Shop.</li>
+            </div>
+            <div id="logo5" style="position: absolute; right: 130px; top: 19px;background-color: white;border: 1px solid black;font-size: 15px;font-weight: 400;font-family: inherit;line-height: 1.5;color: black;background-clip: padding-box;border-radius: 10px;transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                <form action="{% url 'search' %}" method="get"><input name="q" type="text" placeholder="search..."></form>
+            </div>
+            <div id="profile">
+                <a href="/accounts/login"><img src="{% static 'profile.svg' %}" class="abc"></a>
+            </div>
+            <div id="cart">
+                <a href="/shop/cart"><img src="{% static 'cart.svg' %}" class="abc"></a>
+            </div>
+            <ul class="table">
+                <li id="logo2">
+                    <a href="/" class="menu">
+                        Home
+                    </a>
+                </li>
+                <li id="logo2" >
+                    <a href="/shop" class="menu">
+                        Products
+                    </a>
+                </li>
+                <li id="logo2" >
+                    <a href="/shop/aboutus" class="menu">
+                        About Us
+                    </a>
+                </li>
+                <li id="logo2" >
+                    <a href="/shop/contact" class="menu">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+        </header>
+{% endif %}
+    <section>
+        {% for shop in shops %}
+            <div class="container d-flex justify-content-center">
+                <figure class="card card-product-grid card-lg"> <a href="#" class="img-wrap" data-abc="true"> <img src="{{ shop.image.url }}"> </a>
+                    <figcaption class="info-wrap">
+                        <div class="row">
+                            <div class="col-md-9 col-xs-9"> <a href="#" class="title" data-abc="true">{{shop.model}}</a> <span class="rated">{{shop.type}}</span> </div>
+                            <div class="col-md-3 col-xs-3">
+                                <div class="rating text-right"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="rated">Rated 4.0/5</span> </div>
+                            </div>
+                        </div>
+                    </figcaption>
+                    <div class="bottom-wrap-payment">
+                        <figcaption class="info-wrap">
+                            <div class="row">
+                                <div class="col-md-9 col-xs-9"> <a href="#" class="title" data-abc="true">${{shop.price}}</a> <span class="rated">VISA Platinum</span> </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <div class="rating text-right"> #### 8787 </div>
+                                </div>
+                            </div>
+                        </figcaption>
+                    </div>
+                    <div class="bottom-wrap"> <form action="{{ shop.cart }}"><a href="/shop/" class="btn btn-primary float-right" data-abc="true"> Add to Cart</a></form>
+                        <div class="price-wrap"> <a href="{{shop.id}}/" class="btn btn-warning float-left" data-abc="true"> More Detail </a> </div>
+                    </div>
+                </figure>
+            </div>     
+        {% endfor %}
+    </section>
+    {% include 'footer.html' %}
+</body>
+</html>
+
+<!--{% if shop.cart %}
+                    <a class="cartbtn1" ><img src="{% static 'cart.svg' %}" class="cart"></a>
+                    {% else %}
+                        <a class="cartbtn2"><img src="{% static 'cart.svg' %}" class="cart"></a>
+                {% endif %}-->

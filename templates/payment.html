@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+</head>
+<body style="background-image: url(../../../static/back.jpg);color: aliceblue;">
+    {% if user.is_authenticated %}
+    <header class="header">
+        <div id="logo1">
+            <li class="logo">Shop.</li>
+        </div>
+        <div id="profile">
+            <a href="/accounts/profile"><img src="{% static 'profile2.svg' %}" class="abc"></a>
+        </div>
+        <div id="cart">
+            <a href="/shop/cart"><img src="{% static 'cart.svg' %}" class="abc"></a>
+        </div>
+        <div id="exit">
+            <a href="/accounts/logout?next=/"><img src="{% static 'exit.svg' %}" class="abc"></a>
+        </div>
+        <ul class="table">
+            <li id="logo2">
+                <a href="/" class="menu" style="color: aliceblue;">
+                    Home
+                </a>
+            </li>
+            <li id="logo2" >
+                <a href="/shop" class="menu" style="color: aliceblue;">
+                    Products
+                </a>
+            </li>
+            <li id="logo2" >
+                <a href="/shop/aboutus" class="menu" style="color: aliceblue;">
+                    About Us
+                </a>
+            </li>
+            <li id="logo2" >
+                <a href="/shop/contact" class="menu" style="color: aliceblue;">
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+    </header>
+    {% else %}
+        <header class="header">
+            <div id="logo1">
+                <li class="logo">Shop.</li>
+            </div>
+            <div id="profile">
+                <a href="/register/success"><img src="{% static 'profile.svg' %}" class="abc"></a>
+            </div>
+            <div id="cart">
+                <a href="/shop/cart"><img src="{% static 'cart.svg' %}" class="abc"></a>
+            </div>
+            <ul class="table">
+                <li id="logo2">
+                    <a href="/" class="menu" style="color: aliceblue;">
+                        Home
+                    </a>
+                </li>
+                <li id="logo2" >
+                    <a href="/shop" class="menu" style="color: aliceblue;">
+                        Products
+                    </a>
+                </li>
+                <li id="logo2" >
+                    <a href="/shop/aboutus" class="menu" style="color: aliceblue;">
+                        About Us
+                    </a>
+                </li>
+                <li id="logo2" >
+                    <a href="/shop/contact" class="menu" style="color: aliceblue;">
+                        Contact Us
+                    </a>
+                </li>
+            </ul>
+        </header>
+{% endif %}
+    <div style="margin-top: 200px;margin-bottom: 240px;">
+        <h1 style="margin-left: 45%;font-size: 40px;font-family: 'Courier New', Courier, monospace;">Great</h1>
+        <p style="margin-left: 25%;font-size: 30px;font-family: 'Courier New', Courier, monospace;">You have successfully paid for products</p>
+    </div>
+    {% include 'footer.html' %}
+</body>

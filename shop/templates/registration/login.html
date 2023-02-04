@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}?version=50">
+</head>
+<body class="bodygo">
+    {% include 'header.html' %}
+    <img src="{% static 'back.jpg' %}" id="backimg">
+    <div id="loginpg">
+        <h1 class="word">Plese Login</h1>
+        <p id="word2">You must be logged in</p>
+        <form method="post" action="{% url 'login' %}"  id="logform">
+            {% csrf_token %}
+            <table id="logtable">
+                    <tbody><tr><th></th><td><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_password"></td></tr>
+                        <tr><th></th><td><input type="password" name="password" autocomplete="current-password" required="" id="id_password"></td></tr>
+                        <input type="hidden" name="csrfmiddlewaretoken" value="fWMCtQfmZLAwEGtAKeVvxdRUCemYEg0jh6NDdC2XdIFMifSijs9Kmu58ITCsyCbL">
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <input type="submit" value="login" id="submit1">
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+            <p id="notreg">
+                Not Registered Yet?
+                <a href="{% url 'register' %}" id="reghere">register Here</a>
+            </p>
+            <input type="hidden" name="next" value="{{ next }}">
+        </form>
+    </div>
+    {% include 'footer.html' %}
+</body>
