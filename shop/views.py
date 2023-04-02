@@ -1,13 +1,9 @@
 from django.shortcuts import render
 from shop.models import Shop
-from django.http import HttpResponseRedirect
-from shop.forms import ShopForm
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
-from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
-from django.views.generic import edit
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import Q
 
@@ -32,6 +28,9 @@ def shop_list(request):
         'shops' : shops
     }
     return render(request,'list.html',context)
+
+    def shop_cart(request):
+        return self.cart
 
 def shop_index(request,pk):
     shop = Shop.objects.get(id=pk)

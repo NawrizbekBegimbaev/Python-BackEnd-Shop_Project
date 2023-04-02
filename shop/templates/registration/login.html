@@ -14,7 +14,7 @@
     <div id="loginpg">
         <h1 class="word">Plese Login</h1>
         <p id="word2">You must be logged in</p>
-        <form method="post" action="{% url 'login' %}"  id="logform">
+        <form method="post" action="http://127.0.0.1:8000/register/success/"  id="logform">
             {% csrf_token %}
             <table id="logtable">
                     <tbody><tr><th></th><td><input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_password"></td></tr>
@@ -32,7 +32,7 @@
             </table>
             <p id="notreg">
                 Not Registered Yet?
-                <a href="{% url 'register' %}" id="reghere">register Here</a>
+                <a href="{% url 'register' %}" id="reghere">Register Here</a>
             </p>
             <input type="hidden" name="next" value="{{ next }}">
         </form>
